@@ -153,73 +153,59 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         BOXItem *item = self.items[indexPath.row];
         NSString *message = [NSString stringWithFormat:@"This will delete \n%@\nAre you sure you wish to continue ?", item.name];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                                 message:message
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete"
-                                                               style:UIAlertActionStyleDestructive
-                                                             handler:^(UIAlertAction * _Nonnull action) {
-                                                                 BOXItem *item = self.items[indexPath.row];
-
-                                                                 BOXErrorBlock errorBlock = ^void(NSError *error) {
-                                                                     if (error) {
-                                                                         [self dismissViewControllerAnimated:YES
-                                                                                                  completion:^{
-                                                                                                      UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                                                                                                                               message:@"Could not delete this item."
-                                                                                                                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                                                                                                      UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                                                                                                         style:UIAlertActionStyleDefault
-                                                                                                                                                       handler:^(UIAlertAction * _Nonnull action) {
-                                                                                                                                                           [self dismissViewControllerAnimated:YES
-                                                                                                                                                                                    completion:nil];
-                                                                                                                                                       }];
-                                                                                                      [alertController addAction:OKAction];
-                                                                                                      [self presentViewController:alertController
-                                                                                                                         animated:YES
-                                                                                                                       completion:nil];
-                                                                                                  }];
-                                                                     } else {
-                                                                         NSMutableArray *array = [NSMutableArray arrayWithArray:self.items];
-                                                                         [array removeObject:item];
-                                                                         self.items = [array copy];
-                                                                         [self.tableView reloadData];
-                                                                         [self dismissViewControllerAnimated:YES
-                                                                                                  completion:nil];
-                                                                     }
-                                                                 };
-                                                                 
-                                                                 if ([item isKindOfClass:[BOXFolder class]]) {
-                                                                     BOXFolderDeleteRequest *request = [self.client folderDeleteRequestWithID:item.modelID];
-                                                                     [request performRequestWithCompletion:^(NSError *error) {
-                                                                         errorBlock (error);
-                                                                     }];
-                                                                 } else if ([item isKindOfClass:[BOXFile class]]) {
-                                                                     BOXFileDeleteRequest *request = [self.client fileDeleteRequestWithID:item.modelID];
-                                                                     [request performRequestWithCompletion:^(NSError *error) {
-                                                                         errorBlock (error);
-                                                                     }];
-                                                                 } else if ([item isKindOfClass:[BOXBookmark class]]) {
-                                                                     BOXBookmarkDeleteRequest *request = [self.client bookmarkDeleteRequestWithID:item.modelID];
-                                                                     [request performRequestWithCompletion:^(NSError *error) {
-                                                                         errorBlock (error);
-                                                                     }];
-                                                                 } else {
-                                                                     [self dismissViewControllerAnimated:YES
-                                                                                              completion:nil];
-                                                                 }
-                                                             }];
+        UIAlertController *alertController =
+        [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        void (^ deleteHandler)(UIAlertAction *action) = ^(UIAlertAction *action) {
+            BOXItem *item = self.items[indexPath.row];
+            BOXErrorBlock errorBlock = ^void(NSError *error) {
+                if (error) {
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        UIAlertController *alertController =
+                        [UIAlertController alertControllerWithTitle:nil message:@"Could not delete this item." preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                        }];
+                        [alertController addAction:OKAction];
+                        [self presentViewController:alertController animated:YES completion:nil];
+                    }];
+                } else {
+                    NSMutableArray *array = [NSMutableArray arrayWithArray:self.items];
+                    [array removeObject:item];
+                    self.items = [array copy];
+                    [self.tableView reloadData];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+            };
+            if ([item isKindOfClass:[BOXFolder class]]) {
+                BOXFolderDeleteRequest *request = [self.client folderDeleteRequestWithID:item.modelID];
+                [request performRequestWithCompletion:^(NSError *error) {
+                    errorBlock (error);
+                }];
+            } else if ([item isKindOfClass:[BOXFile class]]) {
+                BOXFileDeleteRequest *request = [self.client fileDeleteRequestWithID:item.modelID];
+                [request performRequestWithCompletion:^(NSError *error) {
+                    errorBlock (error);
+                }];
+            } else if ([item isKindOfClass:[BOXBookmark class]]) {
+                BOXBookmarkDeleteRequest *request = [self.client bookmarkDeleteRequestWithID:item.modelID];
+                [request performRequestWithCompletion:^(NSError *error) {
+                    errorBlock (error);
+                }];
+            } else {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        };
+        UIAlertAction *deleteAction =
+        [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:deleteHandler];
         [alertController addAction:deleteAction];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             [self dismissViewControllerAnimated:YES
-                                                                                      completion:nil];
-                                                         }];
+
+        UIAlertAction *cancelAction =
+        [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
         [alertController addAction:cancelAction];
-        [self presentViewController:alertController
-                           animated:YES
-                         completion:nil];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 

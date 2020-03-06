@@ -302,9 +302,8 @@ static NSString *const favoritesCollectionId = @"2921865";
     [appSessionManager saveUserId:userId associateId:associateId withInfo:info];
 
     // Setup some UI to track our download progress
-    BOXFileDownloadRequest *request = [self.client fileDownloadRequestWithID:self.itemID
-                                                             toLocalFilePath:finalPath
-                                                                 associateId:associateId];
+    BOXFileDownloadRequest *request =
+    [self.client fileDownloadRequestWithID:self.itemID toLocalFilePath:finalPath associateId:associateId];
     [self performRequest:request associateId:associateId completion:completionBlock];
     return request;
 }
@@ -322,19 +321,14 @@ static NSString *const favoritesCollectionId = @"2921865";
         [[BOXSampleAppSessionManager defaultManager] removeUserId:userId associateId:associateId];
         self.tableView.tableHeaderView = nil;
         NSString *message = [NSString stringWithFormat:@"Your file %@ in the documents directory.", error == nil ? @"was downloaded" : @"failed to download"];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                                 message:message
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                             [self dismissViewControllerAnimated:YES
-                                                                                      completion:nil];
-                                                         }];
+        UIAlertController *alertController =
+        [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *OKAction =
+        [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
         [alertController addAction:OKAction];
-        [self presentViewController:alertController
-                           animated:YES
-                         completion:nil];
+        [self presentViewController:alertController animated:YES completion:nil];
         if (completionBlock != nil) {
             completionBlock(error);
         }

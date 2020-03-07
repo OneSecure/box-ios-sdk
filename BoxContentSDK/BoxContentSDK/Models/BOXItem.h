@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  ID of the item.
  */
-@property (nonatomic, readwrite, strong) NSString *id;
+//@property (nonatomic, readwrite, strong) NSString *id;
 
 /**
  *  Name of the item.

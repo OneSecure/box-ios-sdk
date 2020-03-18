@@ -311,7 +311,7 @@
 		599B1A831E4BE6DD00709C27 /* BOXAppToAppApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = E11BED411ADC050000A9216F /* BOXAppToAppApplication.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		599B1A841E4BE6DD00709C27 /* BOXAppToAppFileMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = E11BED431ADC050000A9216F /* BOXAppToAppFileMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		599B1A851E4BE6DD00709C27 /* BOXAppToAppMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = E11BED471ADC050000A9216F /* BOXAppToAppMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		599B1A861E4BE6DD00709C27 /* BOXContentSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = E470434316D41DC500FED29A /* BOXContentSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		599B1A861E4BE6DD00709C27 /* BoxContentSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = E470434316D41DC500FED29A /* BoxContentSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		599B1A871E4BE6DD00709C27 /* BOXContentSDKErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = E4F4693517264439000CAD86 /* BOXContentSDKErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		599B1A881E4BE6DD00709C27 /* BOXContentSDKConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = E4CF273516DC4A5100F5979E /* BOXContentSDKConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		599B1A891E4BE6DD00709C27 /* BOXLog.h in Headers */ = {isa = PBXBuildFile; fileRef = E4C3289716D6F447002DC905 /* BOXLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -799,7 +799,7 @@
 		E44A95B016E21C5100356ADA /* BOXContentSDKConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOXContentSDKConstants.m; sourceTree = "<group>"; };
 		E470433E16D41DC500FED29A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E470434216D41DC500FED29A /* BoxContentSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BoxContentSDK-Prefix.pch"; sourceTree = "<group>"; };
-		E470434316D41DC500FED29A /* BOXContentSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOXContentSDK.h; sourceTree = "<group>"; };
+		E470434316D41DC500FED29A /* BoxContentSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoxContentSDK.h; sourceTree = "<group>"; };
 		E4C3289716D6F447002DC905 /* BOXLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BOXLog.h; sourceTree = "<group>"; };
 		E4CA6F54173F13C10089680F /* BOXParallelAPIQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOXParallelAPIQueueManager.h; sourceTree = "<group>"; };
 		E4CA6F55173F13C10089680F /* BOXParallelAPIQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOXParallelAPIQueueManager.m; sourceTree = "<group>"; };
@@ -1481,7 +1481,7 @@
 				15958DF21A14338900AEBCEE /* Requests */,
 				E11BED3D1ADC050000A9216F /* AppToApp */,
 				E470434116D41DC500FED29A /* Supporting Files */,
-				E470434316D41DC500FED29A /* BOXContentSDK.h */,
+				E470434316D41DC500FED29A /* BoxContentSDK.h */,
 				E4F4693517264439000CAD86 /* BOXContentSDKErrors.h */,
 				0E08238F1A76CE2700222778 /* BOXContentSDKErrors.m */,
 				E4CF273516DC4A5100F5979E /* BOXContentSDKConstants.h */,
@@ -1819,7 +1819,7 @@
 				599B1A831E4BE6DD00709C27 /* BOXAppToAppApplication.h in Headers */,
 				599B1A841E4BE6DD00709C27 /* BOXAppToAppFileMetadata.h in Headers */,
 				599B1A851E4BE6DD00709C27 /* BOXAppToAppMessage.h in Headers */,
-				599B1A861E4BE6DD00709C27 /* BOXContentSDK.h in Headers */,
+				599B1A861E4BE6DD00709C27 /* BoxContentSDK.h in Headers */,
 				599B1A871E4BE6DD00709C27 /* BOXContentSDKErrors.h in Headers */,
 				599B1A881E4BE6DD00709C27 /* BOXContentSDKConstants.h in Headers */,
 				599B1A891E4BE6DD00709C27 /* BOXLog.h in Headers */,

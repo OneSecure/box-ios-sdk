@@ -484,6 +484,7 @@ static BOOL BoxOperationStateTransitionIsValid(BOXAPIOperationState fromState, B
         BOXURLSessionManager *sessionMgr = self.session.urlSessionManager;
         if (sessionMgr != nil) {
             BOOL success = [sessionMgr cleanUpBackgroundSessionTaskIfExistForUserId:userId associateId:self.associateId error:&error];
+            (void)success;
             BOXAssert(success, @"Failed to clean up cached info for background session task", error);
         }
     }

@@ -168,6 +168,7 @@
     if (_nonce == nil) {
         NSMutableData * data = [[NSMutableData alloc] initWithLength:32];
         int result = SecRandomCopyBytes(kSecRandomDefault, 32, data.mutableBytes);
+        (void)result;
         NSAssert(result == 0, @"Failed to get secure random bytes.");
         NSData *encodedData = [data base64EncodedDataWithOptions:0];
         _nonce = [[NSString alloc] initWithData:encodedData encoding:NSUTF8StringEncoding];

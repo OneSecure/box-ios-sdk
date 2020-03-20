@@ -88,6 +88,7 @@
                                                          withIntermediateDirectories:YES
                                                                           attributes:nil
                                                                                error:&error];
+                (void)success;
                 BOXAssert(success, @"Failed to create cacheDir %@ with error %@", cacheDir, error);
             }
             self.cacheDir = cacheDir;
